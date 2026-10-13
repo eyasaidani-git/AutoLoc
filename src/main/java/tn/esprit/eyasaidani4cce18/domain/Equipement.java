@@ -3,6 +3,9 @@ package tn.esprit.eyasaidani4cce18.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "equipement")
 @Getter
@@ -16,4 +19,7 @@ public class Equipement {
     private Long idEquipement;
 
     private String libelle;
+
+    @ManyToMany(mappedBy = "equipements")
+    private Set<Vehicule> vehicules = new HashSet<>();
 }
