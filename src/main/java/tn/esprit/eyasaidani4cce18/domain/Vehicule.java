@@ -2,6 +2,7 @@ package tn.esprit.eyasaidani4cce18.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,6 +15,8 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Vehicule {
 
     @Id
@@ -40,16 +43,17 @@ public class Vehicule {
     @Column(nullable = false, length = 20)
     private StatutVehicule statut;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agence_id")
     private Agence agence;
 
-    @OneToMany(mappedBy = "vehicule", fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Reservation> reservations = new ArrayList<>();
 
-    @OneToMany(mappedBy = "vehicule", fetch = FetchType.LAZY)
-    private List<Maintenance> maintenances = new ArrayList<>();
 
+    @ToString.Exclude
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "vehicule_equipement",

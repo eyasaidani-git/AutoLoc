@@ -2,6 +2,7 @@ package tn.esprit.eyasaidani4cce18.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 
 @Entity
@@ -10,6 +11,8 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Reservation {
 
     @Id
@@ -23,15 +26,18 @@ public class Reservation {
     @Enumerated(EnumType.STRING)
     private StatutReservation statut;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicule_id")
     private Vehicule vehicule;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToOne(mappedBy = "reservation")
+    @ToString.Exclude
+    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Contrat contrat;
 
 }

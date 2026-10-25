@@ -2,6 +2,7 @@ package tn.esprit.eyasaidani4cce18.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,6 +15,8 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Agence {
 
     @Id
@@ -28,9 +31,11 @@ public class Agence {
 
     private String telephone;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
     private List<Vehicule> vehicules = new ArrayList<>();
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
     private List<Employe> employes = new ArrayList<>();
 }

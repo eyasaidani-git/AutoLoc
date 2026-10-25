@@ -2,6 +2,7 @@ package tn.esprit.eyasaidani4cce18.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +13,8 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Equipement {
 
     @Id
@@ -20,6 +23,7 @@ public class Equipement {
 
     private String libelle;
 
+    @ToString.Exclude
     @ManyToMany(mappedBy = "equipements")
     private Set<Vehicule> vehicules = new HashSet<>();
 }
