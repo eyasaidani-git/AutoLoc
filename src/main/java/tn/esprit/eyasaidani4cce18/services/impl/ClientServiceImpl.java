@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tn.esprit.eyasaidani4cce18.repositories.IClient;
+import tn.esprit.eyasaidani4cce18.repositories.IClientRepository;
 import tn.esprit.eyasaidani4cce18.domain.Client;
 import tn.esprit.eyasaidani4cce18.services.IClientService;
 
@@ -12,9 +12,9 @@ import tn.esprit.eyasaidani4cce18.services.IClientService;
 @Transactional(readOnly = true)
 public class ClientServiceImpl implements IClientService {
 
-    private final IClient repository;
+    private final IClientRepository repository;
 
-    public ClientServiceImpl(IClient repository) {
+    public ClientServiceImpl(IClientRepository repository) {
         this.repository = repository;
     }
 

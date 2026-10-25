@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tn.esprit.eyasaidani4cce18.repositories.IAgence;
+import tn.esprit.eyasaidani4cce18.repositories.IAgenceRepository;
 import tn.esprit.eyasaidani4cce18.domain.Agence;
 import tn.esprit.eyasaidani4cce18.services.IAgenceService;
 
@@ -12,9 +12,9 @@ import tn.esprit.eyasaidani4cce18.services.IAgenceService;
 @Transactional(readOnly = true)
 public class AgenceServiceImpl implements IAgenceService {
 
-    private final IAgence repository;
+    private final IAgenceRepository repository;
 
-    public AgenceServiceImpl(IAgence repository) {
+    public AgenceServiceImpl(IAgenceRepository repository) {
         this.repository = repository;
     }
 

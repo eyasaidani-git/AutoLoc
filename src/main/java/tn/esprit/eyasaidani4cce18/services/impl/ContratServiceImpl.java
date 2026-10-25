@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tn.esprit.eyasaidani4cce18.repositories.IContrat;
+import tn.esprit.eyasaidani4cce18.repositories.IContratRepository;
 import tn.esprit.eyasaidani4cce18.domain.Contrat;
 import tn.esprit.eyasaidani4cce18.services.IContratService;
 
@@ -12,9 +12,9 @@ import tn.esprit.eyasaidani4cce18.services.IContratService;
 @Transactional(readOnly = true)
 public class ContratServiceImpl implements IContratService {
 
-    private final IContrat repository;
+    private final IContratRepository repository;
 
-    public ContratServiceImpl(IContrat repository) {
+    public ContratServiceImpl(IContratRepository repository) {
         this.repository = repository;
     }
 
